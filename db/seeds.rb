@@ -8,7 +8,6 @@
 
 require 'faker'
 
-
 Type.destroy_all
 Category.destroy_all
 Bookmark.destroy_all
@@ -16,22 +15,30 @@ Bookmark.destroy_all
 status_array = [true, false]
 
 20.times do Category.create(
-    name: Faker::Beer.brand,
+    name: Faker::Company.industry,
     status: status_array.sample()
-)
-end
-
-5.times do  
-    Type.create(
-        name: Faker::Beer.style
     )
 end
+10.times do 
+    Category.find(rand(1..11)).update(category_id: rand(12..20))
+end
+
+
+5.times do  
+    Type.create(name: Faker::Company.profession)
+end
+
 
 20.times do 
     Bookmark.create(
-    name: Faker::Beer.name,
+    name: Faker::Company.name,
     url: Faker::Internet.url,
     category_id: rand(1..10),
     type_id: rand(1..5)
-    )
+)
 end 
+
+
+
+
+
